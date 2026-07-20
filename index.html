@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DRIFT - Luxury minimalist streetwear collection. Elevated fits, chunky sneakers, and premium streetwear redefined. Explore our limited drop.">
+  <title>DRIFT // Luxury GenZ Streetwear Redefined</title>
+  <!-- Google Fonts: Syne for massive headings, Inter for body and prices -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="loading">
+
+  <!-- Preloader Screen -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <div class="fluid-spinner"></div>
+      <div class="preloader-logo">DRIFT</div>
+    </div>
+  </div>
+
+  <!-- Sticky Glassmorphism Header -->
+  <header class="main-header" id="main-header">
+    <div class="header-container">
+      <a href="#" class="brand-logo">DRIFT //</a>
+      <nav class="main-nav">
+        <a href="#shop" class="nav-link">Shop</a>
+        <a href="#lookbook" class="nav-link">Lookbook</a>
+        <a href="#gallery" class="nav-link">Collections</a>
+        <a href="#about" class="nav-link">About</a>
+      </nav>
+      <button class="cart-trigger" id="cart-trigger" aria-label="Open Shopping Cart">
+        <span>Cart</span>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Scroll Section (Canvas Scrubbing of Runway frames) -->
+  <section class="hero-scroll-section" id="hero-scroll">
+    <div class="scroll-canvas-container">
+      <div class="hero-scroll-video-wrapper" id="hero-scroll-video-wrapper">
+        <video id="hero-scroll-video" src="Girl_floating_on_skateboard.mp4" autoplay loop muted playsinline class="hero-scroll-video"></video>
+      </div>
+      <div class="hero-canvas-wrapper" id="hero-canvas-wrapper">
+        <canvas id="scroll-canvas"></canvas>
+      </div>
+      <div class="hero-scroll-overlay" id="hero-scroll-overlay">
+        <div class="hero-content">
+          <span class="sub-tag">NEW DROP &#x2726;</span>
+          <h1 class="hero-title">Streetwear.<br><span class="outline-text">Redefined.</span></h1>
+          <p class="hero-desc">Bold looks. Clean fits. Built to stand out anywhere.</p>
+          <div class="hero-cta">
+            <a href="#shop" class="btn-primary">Explore Collection <span class="arrow-icon">↗</span></a>
+            <a href="#lookbook" class="btn-secondary-link"><span class="play-icon">▶</span> Watch Lookbook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Infinite Streetwear Marquee -->
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span>NEW DROP // SHOP NOW // LIMITED EDITION // DRIFT LABS // STREETWEAR REDEFINED // URBAN LUXURY // SHIPPED GLOBAL //&nbsp;</span>
+        <span>NEW DROP // SHOP NOW // LIMITED EDITION // DRIFT LABS // STREETWEAR REDEFINED // URBAN LUXURY // SHIPPED GLOBAL //&nbsp;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Catalog Section -->
+  <section class="shop-section" id="shop">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-subtitle">THE CATALOG //</span>
+        <h2 class="section-title">CHOOSE YOUR FIT</h2>
+      </div>
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card" data-id="p1" data-name="NEO-G OVERSZ HOODIE" data-price="95.00" data-img="assets/hoodie.png">
+          <div class="product-image-container">
+            <span class="product-status-tag">LIMITED DROP</span>
+            <img src="assets/hoodie.png" alt="NEO-G Oversized Hoodie" class="product-img">
+            <div class="product-card-overlay">
+              <button class="quick-add-btn">QUICK ADD</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">NEO-G OVERSZ HOODIE</h3>
+            <span class="product-price">$95.00</span>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card" data-id="p2" data-name="X-CHRONO SNEAKERS" data-price="160.00" data-img="assets/sneakers.png">
+          <div class="product-image-container">
+            <span class="product-status-tag">SELLING FAST</span>
+            <img src="assets/sneakers.png" alt="X-Chrono Chunky Sneakers" class="product-img">
+            <div class="product-card-overlay">
+              <button class="quick-add-btn">QUICK ADD</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">X-CHRONO SNEAKERS</h3>
+            <span class="product-price">$160.00</span>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card" data-id="p3" data-name="STEALTH CARGO PANTS" data-price="110.00" data-img="assets/cargos.png">
+          <div class="product-image-container">
+            <span class="product-status-tag">DRIFT LABS</span>
+            <img src="assets/cargos.png" alt="Stealth Utility Cargo Pants" class="product-img">
+            <div class="product-card-overlay">
+              <button class="quick-add-btn">QUICK ADD</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">STEALTH CARGO PANTS</h3>
+            <span class="product-price">$110.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Focus Lookbook Slider -->
+  <section class="lookbook-section" id="lookbook">
+    <div class="lookbook-grid">
+      <!-- Horizontal Focus Track of Models -->
+      <div class="slider-model-showcase">
+        <button class="slider-nav-btn prev-btn" id="lookbook-prev-btn" aria-label="Previous Outfit">PREV</button>
+        <div class="slider-frame-container">
+          <div class="model-slide prev" id="slide-prev">
+            <img src="assets/model5.png" alt="Previous Item">
+          </div>
+          <div class="model-slide active" id="slide-active">
+            <img src="assets/model3.png" alt="Active Item" id="lookbook-main-img">
+          </div>
+          <div class="model-slide next" id="slide-next">
+            <img src="assets/model4.png" alt="Next Item">
+          </div>
+        </div>
+        <button class="slider-nav-btn next-btn" id="lookbook-next-btn" aria-label="Next Outfit">NEXT</button>
+      </div>
+
+      <!-- Product Details Column -->
+      <div class="lookbook-details">
+        <div class="product-rating">★ 4.5 <span class="rating-count">(120+ reviews)</span></div>
+        <h2 class="product-title" id="lookbook-title">INK LINEN SHIRT</h2>
+        <span class="product-price" id="lookbook-price">$74.00</span>
+        
+        <!-- Sizing Wrapper -->
+        <div class="product-sizes-wrapper">
+          <span class="sizes-title">SELECT SIZE (US)</span>
+          <div class="product-sizes" id="lookbook-sizes">
+            <span class="size-opt">XS</span>
+            <span class="size-opt">S</span>
+            <span class="size-opt active">M</span>
+            <span class="size-opt">L</span>
+            <span class="size-opt">XL</span>
+          </div>
+        </div>
+
+        <!-- Color Swatch Option Wrapper -->
+        <div class="product-colors-wrapper">
+          <span class="colors-title">SELECT COLOR</span>
+          <div class="product-colors" id="lookbook-colors">
+            <span class="color-opt active" data-color="black" style="background: #000000;"></span>
+            <span class="color-opt" data-color="grey" style="background: #888888;"></span>
+            <span class="color-opt" data-color="beige" style="background: #d4c5b9;"></span>
+          </div>
+        </div>
+        
+        <p class="product-description-teaser">
+          An elevated relaxed-fit cut constructed from organic linen fibers. Lightweight weave engineered for breathability during humid conditions.
+        </p>
+
+        <!-- Rounded Price + Bag Button -->
+        <button class="add-to-cart-btn" id="lookbook-add-btn">
+          <span>ADD TO CART</span>
+          <span class="btn-price-tag" id="lookbook-btn-price">$74.00 // <span class="bag-icon">🛍</span></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curved Carousel Collections Gallery Section -->
+  <section class="gallery-section" id="gallery">
+    <div class="gallery-header-wrap">
+      <span class="section-subtitle">DRIFT LABS //</span>
+      <h2 class="section-title">THE LOOKS GALLERY</h2>
+    </div>
+    
+    <!-- Curved Cards container -->
+    <div class="curved-carousel-container">
+      <div class="carousel-card" style="--card-index: -3;">
+        <img src="assets/model1.jpg" alt="Curved look 1">
+      </div>
+      <div class="carousel-card" style="--card-index: -2;">
+        <img src="assets/model2.jpg" alt="Curved look 2">
+      </div>
+      <div class="carousel-card" style="--card-index: -1;">
+        <img src="assets/model3.png" alt="Curved look 3">
+      </div>
+      <div class="carousel-card" style="--card-index: 0;">
+        <img src="assets/group_pose.png" alt="Curved look 4">
+      </div>
+      <div class="carousel-card" style="--card-index: 1;">
+        <img src="assets/model4.png" alt="Curved look 5">
+      </div>
+      <div class="carousel-card" style="--card-index: 2;">
+        <img src="assets/model5.png" alt="Curved look 6">
+      </div>
+      <div class="carousel-card" style="--card-index: 3;">
+        <img src="assets/lookbook1.png" alt="Curved look 7">
+      </div>
+    </div>
+
+    <!-- Gallery controls and reviews summary -->
+    <div class="gallery-footer-row">
+      <div class="reviews-summary">
+        <div class="avatar-bubbles">
+          <span class="avatar-b"></span>
+          <span class="avatar-b"></span>
+          <span class="avatar-b"></span>
+        </div>
+        <div class="reviews-text">
+          <span class="reviews-count">100+ Reviews</span>
+          <span class="reviews-label">Consistent and satisfied</span>
+        </div>
+      </div>
+      <a href="#shop" class="explore-more-btn">
+        <span>EXPLORE MORE</span>
+        <span class="explore-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Brand Story / Statement Section -->
+  <section class="story-section" id="about">
+    <div class="story-container">
+      <h2 class="story-tagline">Every Pair Tells A Story Here's Theirs</h2>
+      <div class="story-columns-grid">
+        <p class="story-col-text">
+          Real People. Real Vibes. Every pair and garment you see here has already hit the city streets, and our community's feedback says it all. We design clothing to survive the daily grind of Tokyo-to-Berlin experiments, blending raw concrete brutalist structures with cyberpunk lighting palettes.
+        </p>
+        <p class="story-col-text">
+          We do not follow the rules; we design the space in between. Small-batch luxury streetwear engineered for digital and physical aesthetics. We test every prototype in urban environments to ensure your comfort, fit, and style durability remain undefeated.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sliding Cart Drawer -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h2 class="cart-title">YOUR CART //</h2>
+      <button class="cart-close" id="cart-close" aria-label="Close Cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <div class="empty-cart-message">
+        YOUR CART IS EMPTY. ADD PIECES FROM THE DROP.
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>SUBTOTAL:</span>
+        <span id="cart-subtotal">$0.00</span>
+      </div>
+      <button class="checkout-btn" id="checkout-btn" disabled>CHECKOUT NOW</button>
+    </div>
+  </div>
+  <div class="cart-overlay" id="cart-overlay"></div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toast-notification">
+    ITEM ADDED TO CART //
+  </div>
+
+  <!-- Checkout Success Modal -->
+  <div class="modal" id="checkout-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <div class="modal-success-icon">// SUCCESS</div>
+      <h2 class="modal-title">ORDER PLACED.</h2>
+      <p class="modal-desc">Your streetwear drops are secured. Tracking will be sent shortly via SMS/Email.</p>
+      <button class="btn-primary modal-action-btn" id="modal-ok-btn">OK</button>
+    </div>
+  </div>
+
+  <!-- Luxurious Dark Industrial Footer Card -->
+  <footer class="luxury-footer-card">
+    <div class="footer-dot dot-tl"></div>
+    <div class="footer-dot dot-tr"></div>
+    
+    <div class="footer-wrap">
+      <!-- Testimonials Marquee Banner inside footer -->
+      <div class="testimonials-marquee">
+        <div class="testimonial-card">
+          <div class="t-avatar" style="background-image: url('assets/model1.jpg');"></div>
+          <div class="t-info">
+            <span class="t-name">Bruce Frappier</span>
+            <span class="t-role">Brand Manager</span>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-avatar" style="background-image: url('assets/model2.jpg');"></div>
+          <div class="t-info">
+            <span class="t-name">Dorene Belair</span>
+            <span class="t-role">CEO of Company</span>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-avatar" style="background-image: url('assets/model3.png');"></div>
+          <div class="t-info">
+            <span class="t-name">Bruce Frappier</span>
+            <span class="t-role">Senior Designer</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Newsletter Signup -->
+      <div class="newsletter-section">
+        <h3 class="newsletter-title">JOIN THE NETWORK</h3>
+        <p class="newsletter-desc">Be notified of secret drops and private activations.</p>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" placeholder="ENTER EMAIL ADDRESS" class="newsletter-input" required>
+          <button type="submit" class="newsletter-btn">JOIN</button>
+        </form>
+      </div>
+      
+      <h2 class="footer-big-text">Step Into Your Best Style</h2>
+      <div class="footer-branding">DRIFT</div>
+      <p class="copyright">© 2026 DRIFT. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>

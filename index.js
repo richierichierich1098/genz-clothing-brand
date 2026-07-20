@@ -53,15 +53,16 @@ function initScrollTransition() {
     const ih = img.height;
     if (iw <= 0 || ih <= 0) return;
 
-    // Scale down model (83% size) to leave clean space at top/bottom
-    const scaleFactor = 0.83;
-    const r = Math.min(containerW / iw, containerH / ih) * scaleFactor;
+    // Mobile responsive scaling: Full height (92% height) on phones so model is large and prominent
+    const isMobile = window.innerWidth <= 768;
+    const scaleFactor = isMobile ? 0.92 : 0.83;
+    const r = (isMobile ? (containerH / ih) : Math.min(containerW / iw, containerH / ih)) * scaleFactor;
     const nw = iw * r * dpr;
     const nh = ih * r * dpr;
 
-    // Center horizontally, position with a 4% bottom gap (leaving 13% top gap for header)
-    const cx = ((containerW * dpr) - nw) / 2;
-    const cy = (containerH * dpr) - nh - ((containerH * dpr) * 0.04);
+    // Position model centered on desktop, and right-centered full height on mobile
+    const cx = isMobile ? ((containerW * dpr) * 0.52 - nw * 0.5) : (((containerW * dpr) - nw) / 2);
+    const cy = (containerH * dpr) - nh - ((containerH * dpr) * (isMobile ? 0.02 : 0.04));
 
     ctx.drawImage(img, cx, cy, nw, nh);
   }

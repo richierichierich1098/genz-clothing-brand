@@ -1768,6 +1768,38 @@ body.dark-active .glass-badge {
 }
 
 @media (max-width: 768px) {
+  .hero-canvas-wrapper {
+    width: 100vw; /* Full screen width on mobile so model is large & full height */
+    right: 0;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .hero-scroll-video-wrapper {
+    width: 92vw;
+    left: 4vw;
+    height: 100%;
+    padding: 0;
+  }
+
+  .hero-scroll-video {
+    width: 100%;
+    max-width: 100%;
+    height: 46vh;
+    border-radius: 20px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    padding-top: 30px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 9.5vw, 3.6rem);
+  }
+
   .header-container {
     padding: 15px 20px;
   }

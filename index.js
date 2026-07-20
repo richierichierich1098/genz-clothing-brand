@@ -574,7 +574,7 @@ function initShopCarousel() {
 }
 
 /* ==========================================================================
-   7. 3D Curved Gallery Scroll & Drag Parallax Engine
+   7. 3D Curved Gallery Manual Drag & Center Zoom Parallax Engine
    ========================================================================== */
 function initCurvedGalleryScroll() {
   const container = document.querySelector(".curved-carousel-container");
@@ -592,42 +592,60 @@ function initCurvedGalleryScroll() {
 
   function renderGalleryCards() {
     const isMobile = window.innerWidth <= 768;
-    const spacing = isMobile ? 125 : 250;
+    const spacing = isMobile ? 120 : 240;
     const dropY = isMobile ? 8 : 14;
     const rotDeg = isMobile ? 3.5 : 4.5;
 
-    // Scroll progress over gallery section (-1.5 to +1.5 range)
-    const rect = section.getBoundingClientRect();
-    const winH = window.innerHeight;
-    const scrollFactor = (winH / 2 - (rect.top + rect.height / 2)) / winH;
-    const scrollOffset = scrollFactor * (isMobile ? 1.4 : 2.2);
-
-    const totalOffset = targetDragOffset + scrollOffset;
+    // Fixed offset (NO vertical page-scroll movement)
+    const totalOffset = targetDragOffset;
 
     cards.forEach((card) => {
       const baseIdx = parseFloat(card.style.getPropertyValue("--card-index")) || 0;
       const idx = baseIdx + totalOffset;
+      const absIdx = Math.abs(idx);
 
       const tx = idx * spacing;
       const ty = idx * idx * dropY;
       const rot = idx * rotDeg;
-      const scale = Math.max(0.4, 1 - Math.abs(idx) * 0.08);
-      const opacity = Math.max(0.1, 1 - Math.abs(idx) * 0.16);
-      const zIndex = Math.round(20 - Math.abs(idx) * 2);
+
+      // Scale up significantly bigger when image reaches center!
+      let scale = 1.0;
+      if (absIdx < 0.4) {
+        // Center image: 1.28x enlarged size
+        scale = 1.28 - absIdx * 0.4;
+      } else {
+        // Side images: scaled down smaller
+        scale = Math.max(0.45, 1 - absIdx * 0.12);
+      }
+
+      const opacity = Math.max(0.2, 1 - absIdx * 0.2);
+      const zIndex = Math.round(30 - absIdx * 5);
 
       card.style.transform = `translateX(${tx.toFixed(1)}px) translateY(${ty.toFixed(1)}px) rotate(${rot.toFixed(1)}deg) scale(${scale.toFixed(2)})`;
       card.style.zIndex = zIndex;
       card.style.opacity = opacity.toFixed(2);
+
+      if (absIdx < 0.4) {
+        card.classList.add("center-focused");
+      } else {
+        card.classList.remove("center-focused");
+      }
     });
   }
 
-  // Bind Page Scroll & Window Resize
-  window.addEventListener("scroll", () => {
+  // Window Resize
+  window.addEventListener("resize", () => {
     requestAnimationFrame(renderGalleryCards);
   });
 
-  window.addEventListener("resize", () => {
-    requestAnimationFrame(renderGalleryCards);
+  // Click on any card to bring it directly to center!
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const baseIdx = parseFloat(card.style.getPropertyValue("--card-index")) || 0;
+      targetDragOffset = -baseIdx;
+      dragOffset = targetDragOffset;
+      requestAnimationFrame(renderGalleryCards);
+    });
   });
 
   // Pointer Drag Handlers for Desktop Mouse & Touch Screens

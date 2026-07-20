@@ -753,9 +753,10 @@ body.dark-active .glass-badge {
   border: none;
   font-family: var(--font-heading);
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 2px;
-  color: var(--text-color);
+  color: #1b1916 !important;
+  opacity: 0.95;
   cursor: pointer;
   z-index: 10;
   transition: var(--transition-fast);
@@ -763,7 +764,8 @@ body.dark-active .glass-badge {
 }
 
 .slider-nav-btn:hover {
-  opacity: 0.6;
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
 }
 
 .prev-btn {
@@ -782,15 +784,15 @@ body.dark-active .glass-badge {
 
 .product-rating {
   font-size: 12px;
-  font-weight: 700;
-  color: var(--text-color);
+  font-weight: 800;
+  color: #1b1916 !important;
   margin-bottom: 10px;
   letter-spacing: 1px;
 }
 
 .rating-count {
-  color: var(--gray-medium);
-  font-weight: 500;
+  color: #485443 !important;
+  font-weight: 600;
   margin-left: 4px;
 }
 
@@ -800,7 +802,7 @@ body.dark-active .glass-badge {
   font-weight: 800;
   letter-spacing: -1.5px;
   line-height: 1.1;
-  color: var(--text-color);
+  color: #1b1916 !important;
   margin-bottom: 8px;
   text-transform: uppercase;
 }
@@ -808,8 +810,8 @@ body.dark-active .glass-badge {
 .product-price {
   font-family: var(--font-body);
   font-size: 28px;
-  font-weight: 700;
-  color: var(--text-color);
+  font-weight: 800;
+  color: #1b1916 !important;
   margin-bottom: 30px;
 }
 
@@ -821,7 +823,7 @@ body.dark-active .glass-badge {
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 1px;
-  color: var(--gray-medium);
+  color: #485443 !important;
   text-transform: uppercase;
   display: block;
   margin-bottom: 12px;
@@ -838,8 +840,9 @@ body.dark-active .glass-badge {
   height: 44px;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid var(--text-color);
-  font-weight: 700;
+  border: 2px solid #1b1916 !important;
+  color: #1b1916 !important;
+  font-weight: 800;
   font-size: 13px;
   cursor: pointer;
   border-radius: 50%;
@@ -847,8 +850,8 @@ body.dark-active .glass-badge {
 }
 
 .size-opt.active, .size-opt:hover {
-  background: var(--text-color);
-  color: var(--bg-color);
+  background: #1b1916 !important;
+  color: #f2ebe1 !important;
 }
 
 .product-colors {
@@ -867,12 +870,13 @@ body.dark-active .glass-badge {
 }
 
 .color-opt.active {
-  border-color: var(--text-color);
+  border-color: #1b1916 !important;
 }
 
 .product-description-teaser {
   font-size: 14px;
-  color: var(--gray-medium);
+  color: #485443 !important;
+  font-weight: 600;
   line-height: 1.6;
   margin-bottom: 30px;
   max-width: 450px;
@@ -882,8 +886,8 @@ body.dark-active .glass-badge {
 .add-to-cart-btn {
   width: 100%;
   max-width: 450px;
-  background: var(--text-color);
-  color: var(--bg-color);
+  background: #1b1916 !important;
+  color: #f2ebe1 !important;
   border: none;
   padding: 20px 30px;
   font-weight: 800;
@@ -891,7 +895,8 @@ body.dark-active .glass-badge {
   letter-spacing: 2px;
   cursor: pointer;
   border-radius: 50px;
-  border: 2px solid var(--text-color);
+  border: 2px solid #1b1916 !important;
+  box-shadow: 0 10px 25px rgba(27, 25, 22, 0.15);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -899,14 +904,14 @@ body.dark-active .glass-badge {
 }
 
 .add-to-cart-btn:hover {
-  background: transparent;
-  color: var(--text-color);
+  background: transparent !important;
+  color: #1b1916 !important;
   transform: translateY(-2px);
 }
 
 .btn-price-tag {
-  opacity: 0.8;
-  font-weight: 600;
+  opacity: 0.9;
+  font-weight: 700;
 }
 
 .bag-icon {

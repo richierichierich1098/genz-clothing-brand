@@ -128,34 +128,13 @@ function initScrollTransition() {
       leftVideoWrapper.style.transform = `translateY(${(1 - videoProgress) * 30}px) scale(${0.95 + videoProgress * 0.05})`;
     }
 
-    // 3. Page-wide background color transition (starts after hero section)
-    const scrollPercent = scrollY / maxScroll;
-    const startRange = 0.35;
-    const endRange = 0.85;
-    
-    let t = (scrollPercent - startRange) / (endRange - startRange);
-    t = Math.max(0, Math.min(1, t)); // clamp between 0 and 1
-    
-    const bgR = Math.floor(242 + (27 - 242) * t);
-    const bgG = Math.floor(235 + (25 - 235) * t);
-    const bgB = Math.floor(225 + (22 - 225) * t);
-
-    const textR = Math.floor(27 + (242 - 27) * t);
-    const textG = Math.floor(25 + (235 - 25) * t);
-    const textB = Math.floor(22 + (225 - 22) * t);
-
-    document.documentElement.style.setProperty('--bg-color', `rgb(${bgR}, ${bgG}, ${bgB})`);
-    document.documentElement.style.setProperty('--bg-color-rgb', `${bgR}, ${bgG}, ${bgB}`);
-    document.documentElement.style.setProperty('--text-color', `rgb(${textR}, ${textG}, ${textB})`);
-    
+    // 3. Keep background and text color consistent and high-contrast
     const header = document.getElementById("main-header");
     if (header) {
-      if (t > 0.5) {
-        document.body.classList.add("dark-active");
-        header.style.background = `rgba(${bgR}, ${bgG}, ${bgB}, 0.05)`;
+      if (scrollY > 100) {
+        header.classList.add("scrolled");
       } else {
-        document.body.classList.remove("dark-active");
-        header.style.background = `rgba(${bgR}, ${bgG}, ${bgB}, 0.01)`;
+        header.classList.remove("scrolled");
       }
     }
   };

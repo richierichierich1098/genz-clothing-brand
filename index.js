@@ -574,103 +574,51 @@ function initShopCarousel() {
 }
 
 /* ==========================================================================
-   7. 3D Curved Gallery Manual Drag & Center Zoom Parallax Engine
+   7. Horizontal Scroll & Center-Zoom Gallery Engine
    ========================================================================== */
 function initCurvedGalleryScroll() {
   const container = document.querySelector(".curved-carousel-container");
-  const section = document.getElementById("gallery");
-  if (!container || !section) return;
+  if (!container) return;
 
-  const cards = container.querySelectorAll(".carousel-card");
-  if (!cards.length) return;
+  function updateGalleryCenterCard() {
+    const cards = container.querySelectorAll(".carousel-card");
+    if (!cards.length) return;
 
-  let dragOffset = 0;
-  let targetDragOffset = 0;
-  let isDragging = false;
-  let startX = 0;
-  let currentX = 0;
+    const containerRect = container.getBoundingClientRect();
+    const containerCenter = containerRect.left + containerRect.width / 2;
 
-  function renderGalleryCards() {
-    const isMobile = window.innerWidth <= 768;
-    const spacing = isMobile ? 120 : 240;
-    const dropY = isMobile ? 8 : 14;
-    const rotDeg = isMobile ? 3.5 : 4.5;
+    let closestCard = null;
+    let minDistance = Infinity;
 
-    // Fixed offset (NO vertical page-scroll movement)
-    const totalOffset = targetDragOffset;
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.left + rect.width / 2;
+      const distance = Math.abs(containerCenter - cardCenter);
 
-    cards.forEach((card) => {
-      const baseIdx = parseFloat(card.style.getPropertyValue("--card-index")) || 0;
-      const idx = baseIdx + totalOffset;
-      const absIdx = Math.abs(idx);
-
-      const tx = idx * spacing;
-      const ty = idx * idx * dropY;
-      const rot = idx * rotDeg;
-
-      // Scale up significantly bigger when image reaches center!
-      let scale = 1.0;
-      if (absIdx < 0.4) {
-        // Center image: 1.28x enlarged size
-        scale = 1.28 - absIdx * 0.4;
-      } else {
-        // Side images: scaled down smaller
-        scale = Math.max(0.45, 1 - absIdx * 0.12);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestCard = card;
       }
+    });
 
-      const opacity = Math.max(0.2, 1 - absIdx * 0.2);
-      const zIndex = Math.round(30 - absIdx * 5);
-
-      card.style.transform = `translateX(${tx.toFixed(1)}px) translateY(${ty.toFixed(1)}px) rotate(${rot.toFixed(1)}deg) scale(${scale.toFixed(2)})`;
-      card.style.zIndex = zIndex;
-      card.style.opacity = opacity.toFixed(2);
-
-      if (absIdx < 0.4) {
-        card.classList.add("center-focused");
+    cards.forEach(card => {
+      if (card === closestCard) {
+        card.classList.add("in-center");
       } else {
-        card.classList.remove("center-focused");
+        card.classList.remove("in-center");
       }
     });
   }
 
-  // Window Resize
-  window.addEventListener("resize", () => {
-    requestAnimationFrame(renderGalleryCards);
-  });
+  container.addEventListener("scroll", updateGalleryCenterCard);
+  window.addEventListener("resize", updateGalleryCenterCard);
 
-  // Click on any card to bring it directly to center!
-  cards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const baseIdx = parseFloat(card.style.getPropertyValue("--card-index")) || 0;
-      targetDragOffset = -baseIdx;
-      dragOffset = targetDragOffset;
-      requestAnimationFrame(renderGalleryCards);
-    });
-  });
-
-  // Pointer Drag Handlers for Desktop Mouse & Touch Screens
-  container.addEventListener("pointerdown", (e) => {
-    isDragging = true;
-    startX = e.clientX;
-    currentX = e.clientX;
-    container.style.cursor = "grabbing";
-  });
-
-  window.addEventListener("pointermove", (e) => {
-    if (!isDragging) return;
-    currentX = e.clientX;
-    const diff = (currentX - startX) / (window.innerWidth <= 768 ? 140 : 220);
-    targetDragOffset = dragOffset + diff;
-    requestAnimationFrame(renderGalleryCards);
-  });
-
-  window.addEventListener("pointerup", () => {
-    if (!isDragging) return;
-    isDragging = false;
-    dragOffset = targetDragOffset;
-    container.style.cursor = "grab";
-  });
-
-  container.style.cursor = "grab";
-  renderGalleryCards();
+  // Initial scroll positioning
+  setTimeout(() => {
+    const cards = container.querySelectorAll(".carousel-card");
+    if (cards[3]) {
+      cards[3].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }
+    updateGalleryCenterCard();
+  }, 200);
 }

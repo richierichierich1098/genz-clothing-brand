@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCart();
   initLookbookSlider();
   initNewsletter();
+  initShopCarousel();
 });
 
 /* ==========================================================================
@@ -511,4 +512,62 @@ function showToast(message) {
   toastTimeout = setTimeout(() => {
     toast.classList.remove("show");
   }, 3000);
+}
+
+/* ==========================================================================
+   6. Shop Center Zoom Focus Carousel
+   ========================================================================== */
+function initShopCarousel() {
+  const track = document.getElementById("products-carousel-track");
+  const prevBtn = document.getElementById("shop-prev-btn");
+  const nextBtn = document.getElementById("shop-next-btn");
+  if (!track) return;
+
+  function updateCenterCard() {
+    const cards = track.querySelectorAll(".product-card");
+    if (!cards.length) return;
+
+    const trackRect = track.getBoundingClientRect();
+    const trackCenter = trackRect.left + trackRect.width / 2;
+
+    let closestCard = null;
+    let minDistance = Infinity;
+
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.left + rect.width / 2;
+      const distance = Math.abs(trackCenter - cardCenter);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestCard = card;
+      }
+    });
+
+    cards.forEach(card => {
+      if (card === closestCard) {
+        card.classList.add("in-center");
+      } else {
+        card.classList.remove("in-center");
+      }
+    });
+  }
+
+  track.addEventListener("scroll", updateCenterCard);
+  window.addEventListener("resize", updateCenterCard);
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      track.scrollBy({ left: -360, behavior: "smooth" });
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      track.scrollBy({ left: 360, behavior: "smooth" });
+    });
+  }
+
+  // Initial update
+  setTimeout(updateCenterCard, 150);
 }

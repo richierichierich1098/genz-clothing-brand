@@ -78,51 +78,87 @@
         <span class="section-subtitle">THE CATALOG //</span>
         <h2 class="section-title">CHOOSE YOUR FIT</h2>
       </div>
-      <div class="products-grid">
-        <!-- Product 1 -->
-        <div class="product-card" data-id="p1" data-name="NEO-G OVERSZ HOODIE" data-price="95.00" data-img="assets/hoodie.png">
-          <div class="product-image-container">
-            <span class="product-status-tag">LIMITED DROP</span>
-            <img src="assets/hoodie.png" alt="NEO-G Oversized Hoodie" class="product-img">
-            <div class="product-card-overlay">
-              <button class="quick-add-btn">QUICK ADD</button>
+      <div class="shop-carousel-wrapper">
+        <button class="shop-nav-btn shop-prev-btn" id="shop-prev-btn" aria-label="Previous Product">←</button>
+        
+        <div class="products-carousel-track" id="products-carousel-track">
+          <!-- Product 1 -->
+          <div class="product-card in-center" data-id="p1" data-name="NEO-G OVERSZ HOODIE" data-price="95.00" data-img="assets/hoodie.png">
+            <div class="product-image-container">
+              <span class="product-status-tag">LIMITED DROP</span>
+              <img src="assets/hoodie.png" alt="NEO-G Oversized Hoodie" class="product-img">
+              <div class="product-card-overlay">
+                <button class="quick-add-btn">QUICK ADD</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">NEO-G OVERSZ HOODIE</h3>
+              <span class="product-price">$95.00</span>
             </div>
           </div>
-          <div class="product-info">
-            <h3 class="product-name">NEO-G OVERSZ HOODIE</h3>
-            <span class="product-price">$95.00</span>
+
+          <!-- Product 2 -->
+          <div class="product-card" data-id="p2" data-name="X-CHRONO SNEAKERS" data-price="160.00" data-img="assets/sneakers.png">
+            <div class="product-image-container">
+              <span class="product-status-tag">SELLING FAST</span>
+              <img src="assets/sneakers.png" alt="X-Chrono Chunky Sneakers" class="product-img">
+              <div class="product-card-overlay">
+                <button class="quick-add-btn">QUICK ADD</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">X-CHRONO SNEAKERS</h3>
+              <span class="product-price">$160.00</span>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="product-card" data-id="p3" data-name="STEALTH CARGO PANTS" data-price="110.00" data-img="assets/cargos.png">
+            <div class="product-image-container">
+              <span class="product-status-tag">DRIFT LABS</span>
+              <img src="assets/cargos.png" alt="Stealth Utility Cargo Pants" class="product-img">
+              <div class="product-card-overlay">
+                <button class="quick-add-btn">QUICK ADD</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">STEALTH CARGO PANTS</h3>
+              <span class="product-price">$110.00</span>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="product-card" data-id="p4" data-name="INK LINEN SHIRT" data-price="74.00" data-img="assets/linen_shirt.png">
+            <div class="product-image-container">
+              <span class="product-status-tag">NEW ARRIVAL</span>
+              <img src="assets/linen_shirt.png" alt="Ink Linen Oversized Shirt" class="product-img">
+              <div class="product-card-overlay">
+                <button class="quick-add-btn">QUICK ADD</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">INK LINEN SHIRT</h3>
+              <span class="product-price">$74.00</span>
+            </div>
+          </div>
+
+          <!-- Product 5 -->
+          <div class="product-card" data-id="p5" data-name="TACTICAL UTILITY JACKET" data-price="145.00" data-img="assets/model4.png">
+            <div class="product-image-container">
+              <span class="product-status-tag">LIMITED EDITION</span>
+              <img src="assets/model4.png" alt="Tactical Utility Jacket" class="product-img">
+              <div class="product-card-overlay">
+                <button class="quick-add-btn">QUICK ADD</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">TACTICAL UTILITY JACKET</h3>
+              <span class="product-price">$145.00</span>
+            </div>
           </div>
         </div>
 
-        <!-- Product 2 -->
-        <div class="product-card" data-id="p2" data-name="X-CHRONO SNEAKERS" data-price="160.00" data-img="assets/sneakers.png">
-          <div class="product-image-container">
-            <span class="product-status-tag">SELLING FAST</span>
-            <img src="assets/sneakers.png" alt="X-Chrono Chunky Sneakers" class="product-img">
-            <div class="product-card-overlay">
-              <button class="quick-add-btn">QUICK ADD</button>
-            </div>
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">X-CHRONO SNEAKERS</h3>
-            <span class="product-price">$160.00</span>
-          </div>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="product-card" data-id="p3" data-name="STEALTH CARGO PANTS" data-price="110.00" data-img="assets/cargos.png">
-          <div class="product-image-container">
-            <span class="product-status-tag">DRIFT LABS</span>
-            <img src="assets/cargos.png" alt="Stealth Utility Cargo Pants" class="product-img">
-            <div class="product-card-overlay">
-              <button class="quick-add-btn">QUICK ADD</button>
-            </div>
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">STEALTH CARGO PANTS</h3>
-            <span class="product-price">$110.00</span>
-          </div>
-        </div>
+        <button class="shop-nav-btn shop-next-btn" id="shop-next-btn" aria-label="Next Product">→</button>
       </div>
     </div>
   </section>

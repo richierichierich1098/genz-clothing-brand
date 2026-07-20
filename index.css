@@ -549,18 +549,83 @@ body.dark-active .glass-badge {
   margin-top: 10px;
 }
 
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.shop-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.products-carousel-track {
+  display: flex;
   gap: 40px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 60px 30vw 70px;
+  align-items: center;
+  scrollbar-width: none;
+}
+
+.products-carousel-track::-webkit-scrollbar {
+  display: none;
 }
 
 .product-card {
+  flex: 0 0 320px;
+  scroll-snap-align: center;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   position: relative;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+  transform: scale(0.85);
+  opacity: 0.6;
+  filter: brightness(0.92) contrast(0.95);
 }
+
+/* Central Focus Product Card - Scaled Up Bigger! */
+.product-card.in-center {
+  transform: scale(1.18) translateY(-12px);
+  opacity: 1;
+  filter: brightness(1.05) contrast(1.02);
+  z-index: 10;
+}
+
+.product-card.in-center .product-image-container {
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
+  border: 2px solid rgba(27, 25, 22, 0.15);
+}
+
+.shop-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #1b1916;
+  color: #f2ebe1;
+  border: none;
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+  z-index: 25;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shop-nav-btn:hover {
+  background: #000000;
+  transform: translateY(-50%) scale(1.12);
+}
+
+.shop-prev-btn { left: 10px; }
+.shop-next-btn { right: 10px; }
 
 .product-image-container {
   width: 100%;

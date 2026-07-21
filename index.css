@@ -1112,18 +1112,8 @@ body.dark-active .glass-badge {
   transition: transform 0.6s ease;
 }
 
-.carousel-card:hover {
-  transform: 
-    translateX(calc(var(--card-index) * 250px)) 
-    translateY(calc(var(--card-index) * var(--card-index) * 14px - 15px)) 
-    rotate(calc(var(--card-index) * 4deg))
-    scale(calc(1 - abs(var(--card-index)) * 0.08 + 0.04));
-  box-shadow: 0 25px 50px rgba(0,0,0,0.18);
-  z-index: 20;
-}
-
 .carousel-card:hover img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 /* Gallery Footer Row styling */
@@ -1833,21 +1823,8 @@ body.dark-active .glass-badge {
   }
   
   .carousel-card {
-    width: 160px;
-    height: 240px;
-    transform: 
-      translateX(calc(var(--card-index) * 170px)) 
-      translateY(calc(var(--card-index) * var(--card-index) * 10px)) 
-      rotate(calc(var(--card-index) * 4deg))
-      scale(calc(1 - abs(var(--card-index)) * 0.08));
-  }
-  
-  .carousel-card:hover {
-    transform: 
-      translateX(calc(var(--card-index) * 170px)) 
-      translateY(calc(var(--card-index) * var(--card-index) * 10px - 10px)) 
-      rotate(calc(var(--card-index) * 4deg))
-      scale(calc(1 - abs(var(--card-index)) * 0.08 + 0.04));
+    flex: 0 0 180px;
+    height: 270px;
   }
   
   .story-columns-grid {
@@ -1948,25 +1925,14 @@ body.dark-active .glass-badge {
   }
   
   .curved-carousel-container {
-    height: 320px;
+    height: 380px;
+    padding: 30px 25vw 40px;
+    gap: 20px;
   }
   
   .carousel-card {
-    width: 120px;
-    height: 180px;
-    transform: 
-      translateX(calc(var(--card-index) * 125px)) 
-      translateY(calc(var(--card-index) * var(--card-index) * 8px)) 
-      rotate(calc(var(--card-index) * 4deg))
-      scale(calc(1 - abs(var(--card-index)) * 0.08));
-  }
-  
-  .carousel-card:hover {
-    transform: 
-      translateX(calc(var(--card-index) * 125px)) 
-      translateY(calc(var(--card-index) * var(--card-index) * 8px - 10px)) 
-      rotate(calc(var(--card-index) * 4deg))
-      scale(calc(1 - abs(var(--card-index)) * 0.08 + 0.04));
+    flex: 0 0 160px;
+    height: 240px;
   }
   
   .gallery-footer-row {

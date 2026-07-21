@@ -554,8 +554,26 @@ function initShopCarousel() {
     });
   }
 
-  track.addEventListener("scroll", updateCenterCard);
-  window.addEventListener("resize", updateCenterCard);
+  let tickingShop = false;
+  function onShopScroll() {
+    if (!tickingShop) {
+      requestAnimationFrame(() => {
+        updateCenterCard();
+        tickingShop = false;
+      });
+      tickingShop = true;
+    }
+  }
+
+  track.addEventListener("scroll", onShopScroll, { passive: true });
+  window.addEventListener("resize", onShopScroll);
+
+  const shopCards = track.querySelectorAll(".product-card");
+  shopCards.forEach(card => {
+    card.addEventListener("click", () => {
+      card.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    });
+  });
 
   if (prevBtn) {
     prevBtn.addEventListener("click", () => {
@@ -610,14 +628,31 @@ function initCurvedGalleryScroll() {
     });
   }
 
-  container.addEventListener("scroll", updateGalleryCenterCard);
-  window.addEventListener("resize", updateGalleryCenterCard);
+  let tickingGallery = false;
+  function onGalleryScroll() {
+    if (!tickingGallery) {
+      requestAnimationFrame(() => {
+        updateGalleryCenterCard();
+        tickingGallery = false;
+      });
+      tickingGallery = true;
+    }
+  }
+
+  container.addEventListener("scroll", onGalleryScroll, { passive: true });
+  window.addEventListener("resize", onGalleryScroll);
+
+  const galleryCards = container.querySelectorAll(".carousel-card");
+  galleryCards.forEach(card => {
+    card.addEventListener("click", () => {
+      card.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    });
+  });
 
   // Initial scroll positioning
   setTimeout(() => {
-    const cards = container.querySelectorAll(".carousel-card");
-    if (cards[3]) {
-      cards[3].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    if (galleryCards[3]) {
+      galleryCards[3].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     }
     updateGalleryCenterCard();
   }, 200);

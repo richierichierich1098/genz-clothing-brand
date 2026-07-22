@@ -19,7 +19,7 @@ function initScrollTransition() {
   const heroSection = document.getElementById("hero-scroll");
 
   const frameCount = 79;
-  const currentFrame = index => `assets/frames/frame_${index.toString().padStart(4, '0')}.png`;
+  const currentFrame = index => `assets/frames/frame_${index.toString().padStart(4, '0')}.png?v=3.0`;
 
   // Preload Images
   const images = [];

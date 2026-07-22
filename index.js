@@ -18,24 +18,29 @@ function initScrollTransition() {
   const overlay = document.getElementById("hero-scroll-overlay");
   const heroSection = document.getElementById("hero-scroll");
 
-  const frameCount = 79;
+  const existingFrameIndices = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 34, 35, 37, 38, 39, 40, 41,
+    71, 72, 73, 74, 75, 76, 77, 78, 79
+  ];
   const currentFrame = index => `assets/frames/frame_${index.toString().padStart(4, '0')}.png`;
 
   // Preload Images
   const images = [];
+  const framePaths = existingFrameIndices.map(currentFrame);
   
   // Render first frame immediately
   const firstImg = new Image();
-  firstImg.src = currentFrame(1);
+  firstImg.src = framePaths[0];
   images.push(firstImg);
   firstImg.onload = () => {
     resizeCanvas();
   };
 
   // Preload remaining frames
-  for (let i = 2; i <= frameCount; i++) {
+  for (let i = 1; i < framePaths.length; i++) {
     const img = new Image();
-    img.src = currentFrame(i);
+    img.src = framePaths[i];
     images.push(img);
   }
 
@@ -84,7 +89,7 @@ function initScrollTransition() {
     const scrollY = window.scrollY;
     const heroScrollHeight = heroSection.offsetHeight - window.innerHeight;
     const heroProgress = heroScrollHeight > 0 ? Math.max(0, Math.min(1, scrollY / heroScrollHeight)) : 0;
-    const frameIndex = Math.min(frameCount - 1, Math.floor(heroProgress * (frameCount - 1)));
+    const frameIndex = Math.min(images.length - 1, Math.floor(heroProgress * (images.length - 1)));
     if (images[frameIndex] && (images[frameIndex].complete || frameIndex === 0)) {
       drawImageContain(ctx, images[frameIndex]);
     }
@@ -102,7 +107,7 @@ function initScrollTransition() {
     const heroScrollHeight = heroSection.offsetHeight - window.innerHeight;
     const heroProgress = heroScrollHeight > 0 ? Math.max(0, Math.min(1, scrollY / heroScrollHeight)) : 0;
     
-    const frameIndex = Math.min(frameCount - 1, Math.floor(heroProgress * (frameCount - 1)));
+    const frameIndex = Math.min(images.length - 1, Math.floor(heroProgress * (images.length - 1)));
     if (images[frameIndex] && (images[frameIndex].complete || frameIndex === 0)) {
       drawImageContain(ctx, images[frameIndex]);
     }

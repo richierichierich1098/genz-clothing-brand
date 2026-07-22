@@ -18,29 +18,24 @@ function initScrollTransition() {
   const overlay = document.getElementById("hero-scroll-overlay");
   const heroSection = document.getElementById("hero-scroll");
 
-  const existingFrameIndices = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 34, 35, 37, 38, 39, 40, 41,
-    71, 72, 73, 74, 75, 76, 77, 78, 79
-  ];
+  const frameCount = 79;
   const currentFrame = index => `assets/frames/frame_${index.toString().padStart(4, '0')}.png`;
 
   // Preload Images
   const images = [];
-  const framePaths = existingFrameIndices.map(currentFrame);
   
   // Render first frame immediately
   const firstImg = new Image();
-  firstImg.src = framePaths[0];
+  firstImg.src = currentFrame(1);
   images.push(firstImg);
   firstImg.onload = () => {
     resizeCanvas();
   };
 
   // Preload remaining frames
-  for (let i = 1; i < framePaths.length; i++) {
+  for (let i = 2; i <= frameCount; i++) {
     const img = new Image();
-    img.src = framePaths[i];
+    img.src = currentFrame(i);
     images.push(img);
   }
 
